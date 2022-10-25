@@ -6,14 +6,6 @@ const iphoneXS = 350
 const iphone11 = 425
 const iphone12 = 560
 
-//Stock 
-
-let stockIphone8 = 2
-let stockIphone8Plus = 3
-let stockIphoneXS = 3
-let stockIphone11 = 5
-let stockIphone12 = 4
-
 //Variables para el funcionamiento del ciclo
 
 let catalogue = 0
