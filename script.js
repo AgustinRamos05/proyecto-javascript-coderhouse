@@ -1,128 +1,98 @@
-//Precio de los productos
+//Declarando la clase product
+class Product{
+    constructor(id, name, price, stock){
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+    }
+    TransformToPesos(){
+          this.price = this.price * 290
+    }
+    Sold(){
+        this.stock = this.stock - 1
+    }
+}
 
-const iphone8 = 240
-const iphone8Plus = 300
-const iphoneXS = 350
-const iphone11 = 425
-const iphone12 = 560
+//Declarando los productos
+
+const products = [];
+products.push(new Product(001, "Iphone 8",240,3));
+products.push(new Product(002, "Iphone 8 Plus",300,4));
+products.push(new Product(003, "Iphone XS",350,2));
+products.push(new Product(004, "Iphone 11",425,6));
+products.push(new Product(005, "Iphone 12",560,6));
+products.push(new Product(006, "Iphone 13",620,5));
 
 //Variables para el funcionamiento del ciclo
 
 let catalogue = 0
-let product = 0
-let carrito = 0
-let pago = 0
+let add = 0
+let selectProduct = 0
+let carrito = []
+let pay = 0
 let repeat = 0
 
 //Funcion para ver catalogo y agregar productos al carrito
 
 function verCatalogo(){
 
-    catalogue = Number(prompt("¿Desea ver nuestro catalogo? (1- Si 2- No)"))
+    catalogue = Number(prompt("¿Desea ver nuestro catalogo? (1- Si 2- No)"));
     switch(catalogue){
-    case 1:
-        while(repeat !== 2){
-        console.log("El usuario desea ver el catalogo");
-        product = Number(prompt("¿Que producto desea ver? 1-Iphone 8  2-Iphone 8 Plus  3-Iphone XS  4-Iphone 11  5-Iphone 12"))
-        switch(product){
-            case 1:
-                console.log("Iphone 8");
-                carrito = Number(prompt("¿Desea agregarlo al carrito? Precio: 240 usd (1- Si 2- No)"))
-                if(carrito == 1){
-                    pago = pago + iphone8
-                    console.log("Se ha agregado el producto al carrito. Precio: " + iphone8 + " usd");
-                    console.log( "Total del carrito: " + pago + " usd" )
-                    alert("se ha agregado al carrito");
-                    repeat = Number(prompt("¿Desea seguir viendo productos? (1- Si 2- No)"))
-                }else{
-                   console.log("No se ha agregado al carrito");
-                   repeat = Number(prompt("¿Desea ver otro producto? (1- Si 2- No)"))
+        case 1:
+            while(repeat !== 2){
+                console.log("El usuaruio desea ver el catalogo");
+                products.forEach((obj) =>{
+                    console.log(obj);
+                    alert(obj.name + "    Costo: "+ obj.price + " usd");
+                })
+                add = Number(prompt("¿Desea agregar algunos de estos productos al carrito? (1- Si 2- No)"));
+                switch(add){
+                    case 1:
+                        selectProduct = Number(prompt("Seleccione el numero del que desea añadir: 0-Iphone 8  1-Iphone 8 Plus  2-Iphone XS  3-Iphone 11  4-Iphone 12 5-Iphone 13"));
+                        if ((selectProduct >= 0) && (selectProduct <= 5)){
+                            carrito.push(products[selectProduct]);
+                            console.log(products[selectProduct].name + " se ha añadido al carrito");
+                            pay = pay + products[selectProduct].price
+                            console.log("Total: " + pay);
+                            alert(products[selectProduct].name + " se ha añadido al carrito correctamente");
+                            repeat = Number(prompt("¿Desea ver otro producto? (1- Si 2- No)"));
+                        }else{
+                            console.log("El numero ingresado por el usuario no corresponde a ningun producto");
+                            alert("El numero ingresado es incorrecto")
+                        }
+                        break
+                    case 2:
+                        console.log("El usuario no desea realizar una compra");
+                        alert("Gracias por visitar nuestro sitio web");
+                        repeat = 2
+                        break
+                    default:
+                        console.log("Se ingreso un valor incorrecto");
+                        alert("Se ingreso un valor incorrecto");
+                        break
                 }
-                break
-            case 2:
-                console.log("Iphone 8 Plus");
-                carrito = Number(prompt("¿Desea agregarlo al carrito? Precio: 300 usd (1- Si 2- No)"))
-                if(carrito == 1){
-                    pago = pago + iphone8Plus
-                    console.log("Se ha agregado el producto al carrito. Precio: " + iphone8Plus + " usd");
-                    console.log( "Total del carrito: " + pago + " usd" )
-                    alert("se ha agregado al carrito");
-                    repeat = Number(prompt("¿Desea seguir viendo productos? (1- Si 2- No)"))
-                }else{
-                    console.log("No se ha agregado al carrito");
-                   repeat = Number(prompt("¿Desea ver otro producto? (1- Si 2- No)"))
-                }
-                break
-            case 3:
-                console.log("Iphone XS");
-                carrito = Number(prompt("¿Desea agregarlo al carrito? Precio: 350 usd (1- Si 2- No)"))
-                if(carrito == 1){
-                    pago = pago + iphoneXS
-                    console.log("Se ha agregado el producto al carrito. Precio: " + iphoneXS + " usd");
-                    console.log( "Total del carrito: " + pago + " usd" )
-                    alert("se ha agregado al carrito");
-                    repeat = Number(prompt("¿Desea seguir viendo productos? (1- Si 2- No)"))
-                }else{
-                    console.log("No se ha agregado al carrito");
-                   repeat = Number(prompt("¿Desea ver otro producto? (1- Si 2- No)"))
-                }
-                break
-            case 4:
-                console.log("Iphone 11");
-                carrito = Number(prompt("¿Desea agregarlo al carrito? Precio: 425 usd (1- Si 2- No)"))
-                if(carrito == 1){
-                    pago = pago + iphone11
-                    console.log("Se ha agregado el producto al carrito. Precio: " + iphone11 + " usd");
-                    console.log( "Total del carrito: " + pago + " usd" )
-                    alert("se ha agregado al carrito");
-                    repeat = Number(prompt("¿Desea seguir viendo productos? (1- Si 2- No)"))
-                }else{
-                    console.log("No se ha agregado al carrito");
-                   repeat = Number(prompt("¿Desea ver otro producto? (1- Si 2- No)"))
-                }
-                break
-            case 5:
-                console.log("Iphone 12");
-                carrito = Number(prompt("¿Desea agregarlo al carrito? Precio: 560 usd (1- Si 2- No)"))
-                if(carrito == 1){
-                    pago = pago + iphone12
-                    console.log("Se ha agregado el producto al carrito. Precio: " + iphone12 + " usd");
-                    console.log( "Total del carrito: " + pago + " usd" )
-                    alert("se ha agregado al carrito");
-                    repeat = Number(prompt("¿Desea seguir viendo productos? (1- Si 2- No)"))
-                }else{
-                    console.log("No se ha agregado al carrito");
-                   repeat = Number(prompt("¿Desea ver otro producto? (1- Si 2- No)"))
-                }
-                break
-            default:
-                console.log("Se ingreso un valor incorrecto");
-                alert("Se ingreso un valor incorrecto");
-                break
-        }
+            }
+            break
+        case 2:
+            console.log("El usuario no desea ver el catalogo");
+            alert("Gracias por visitar nuestro sitio web");
     }
-        break
-    case 2:
-        alert("Gracias por su visita")    
-        break
-    default:
-        console.log("Se ingreso un valor incorrecto");
-        alert("Se ingreso un valor incorrecto");
-        break
-}
 }
 
-let comprar = 0
-let precioEnPesos = 0
+verCatalogo();
 
-function efectuarCompra(){
-    if (pago > 0){
-        comprar = Number(prompt("¡Desea efectuar la compra? (1- Si 2- No)"))
-        switch(comprar){
+//Funcion para realizar la compra
+
+function verCarrito(){
+
+    if (pay > 0){
+        let buy = Number(prompt("¡Desea efectuar la compra? (1- Si 2- No)"))
+        switch(buy){
             case 1:
-                precioEnPesos = pago * 290
-                alert("Su saldo a pagar es de $" + precioEnPesos + " o " + pago + "usd" );
-                console.log("Saldo a pagar: $" + precioEnPesos);
+                let priceInPesos = pay * 290
+                alert("Su saldo a pagar es de $" + priceInPesos + " o " + pay + "usd" );
+                console.log("Saldo a pagar: $" + priceInPesos);
             break
             case 2:
                 alert("Gracias por visitar nuetra pagina");
@@ -133,12 +103,11 @@ function efectuarCompra(){
                 break
         }
     }else{
-        console.log("No hay nada en el carrito");
+        console.log("No hay productos en el carrito");
     }
-
 }
 
+verCarrito();
 
 
-verCatalogo();
-efectuarCompra();
+
