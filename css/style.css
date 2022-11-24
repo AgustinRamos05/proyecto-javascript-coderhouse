@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(243, 243, 243);
+}
+
+#bannerIphone {
+    position: relative;
+}
+
+#bannerIphone img{
+    width: 100%;
+}
+
+#bannerIphone h1{
+    position: absolute;
+    top: 60%;
+    color: white;
+    padding: 1rem;
+    width: 30%;
+}
+
+.title{
+    margin: 2rem;
+}
+
+#shopContent{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 2rem;
+}
+
+.products{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 14rem;
+    height: 22rem;
+    margin: 1rem .5rem;
+    border: 2px rgba(102, 102, 102, 0.397) solid;
+    border-radius: 5px;
+    background-color: white;    
+}
+
+.products__img{
+    width: 100%;
+    height: auto;
+}
+
+.products__title{
+    padding: 0 1rem;
+}
+
+.products__price{
+    padding: 0 1rem;
+}
+
+.btn{
+    border: 1px white solid;
+    width: 50%;
+    color: white;
+    text-transform: uppercase;
+    margin: 0 auto;
+    background-color: rgb(33, 33, 128);
+}
+
+.btn:hover{
+    border: 1px rgb(33, 33, 128) solid;
+    background-color: white;
+    color: black;
+}
+
+.shoppingCartProducts{
+    width: 18rem;
+    background-color: white;
+}
+
+.buyProduct{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buyProduct h5{
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0 1rem;
+}
+
+.buyProduct p{
+    margin: 0 1rem;
+}
+
+.buyProduct img{
+    width: 3rem;
+}
